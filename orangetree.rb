@@ -85,7 +85,7 @@ class Tree
 		else
 			puts "You don't have any seeds in your inventory to plant."
 		end
-
+	end
 
 end
 $inventory = {:Oranges => 0, :Seeds => 1}
@@ -100,5 +100,9 @@ puts "	- Count - Count the amount of oranges on your tree."
 puts "	- Pick - Pick an orange from your tree."
 puts "	- Inventory - Look at your inventory"
 puts " 	- Observe - Observe the height of your tree."
+
+tree = Tree.new
+tree.plant_tree
+tree.plant_tree
 
 
