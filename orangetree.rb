@@ -53,22 +53,15 @@ class Tree
 				puts "This tree looks like it still has many years of life left in it."
 			end
 		else
-			puts "One year of time passes, nothing happens."
+			puts "One year of time passes, nothing happens"
 		end
 
 		end
-
-
-
-
 
 	def count_oranges
 	#Counts the amount of oranges on the tree.
 	puts "You count the oranges, there are currently #{@fruit} oranges on the tree waiting to be picked."
 	end
-
-
-
 
 	def pick_orange
 	#Checks to see if the tree has any oranges and if it does then remove one from the tree and add it to inventory.
@@ -79,12 +72,6 @@ class Tree
 		else
 		puts "There aren't any oranges on the tree to pick."
 		end
-	end
-
-	def check_inventory
-		# check your inventory, right now this is just the amount of oranges and seeds
-		puts "Your current inventory is:"
-		puts "#{$inventory}"
 	end
 
 	def plant_tree
@@ -99,6 +86,14 @@ class Tree
 	end
 
 end
+
+def check_inventory
+		# check your inventory, right now this is just the amount of oranges and seeds
+		puts "Your current inventory is:"
+		puts "#{$inventory}"
+	end
+
+
 $inventory = {:Oranges => 0, :Seeds => 1}
 
 puts "Welcome to Orange Tree Simulator!"
@@ -112,18 +107,5 @@ puts "	- Pick - Pick an orange from your tree."
 puts "	- Inventory - Look at your inventory"
 puts " 	- Observe - Observe the height of your tree."
 
-tree = Tree.new
-
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
-tree.one_year_passes
 
 
