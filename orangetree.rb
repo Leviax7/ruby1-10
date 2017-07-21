@@ -2,7 +2,7 @@ class Tree
 	def initialize
 		@height = 0
 		@fruit = 0
-		puts "You plant an orange tree seed"
+		
 	end
 
 	def check_height
@@ -18,7 +18,7 @@ class Tree
 		#Makes time pass. With each passing year the program will check the height of the tree and return a hint on how long it has left to live as well as
 		#telling you how much fruit it has produced for the year. 
 		@height = @height + 4
-		
+		puts "One year of time passes."
 		if @fruit > 0
 			puts "Oh no! The fruit from the previous year has withered and died."
 			@fruit = 0
@@ -73,21 +73,32 @@ class Tree
 	end
 
 	def check_inventory
-		# check your inventory, right now this is just the amount of oranges
+		# check your inventory, right now this is just the amount of oranges and seeds
 		puts "Your current inventory is:"
 		puts "#{$inventory}"
 	end
 
+	def plant_tree
+		if $inventory[:Seeds] >= 1
+			puts "You plant an orange tree seed"
+			$inventory[:Seeds] = $inventory[:Seeds] - 1
+		else
+			puts "You don't have any seeds in your inventory to plant."
+		end
+
+
 end
-$inventory = {:Oranges => 0}
+$inventory = {:Oranges => 0, :Seeds => 1}
+
 puts "Welcome to Orange Tree Simulator!"
 puts "Please begin by entering your name: "
 name = gets.chomp
 puts "Welcome #{name}, to play this game you may type in commands to perform certain actions. The commands you have access to are as follows:"
-puts "	- Plant tree"
-puts "	- Make time pass"
-puts "	- Count fruit"
-puts "	- Pick fruit"
-puts "	- Check inventory"
-puts " 	- Check tree height"
+puts "	- Plant - Adds a sapling to your garden. You must have a seed in your inventory."
+puts "	- Pass Time - Makes one year of time pass."
+puts "	- Count - Count the amount of oranges on your tree."
+puts "	- Pick - Pick an orange from your tree."
+puts "	- Inventory - Look at your inventory"
+puts " 	- Observe - Observe the height of your tree."
+
 
