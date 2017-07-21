@@ -9,8 +9,12 @@ class Tree
 	#Observe the height of the tree, this will grow with each one_year_passes
 	#Older trees will produce more fruit per year
 	#Make tree look older with height
-	puts "Your tree is currently #{@height} feet tall."
+	if @tree_count == 0 
+		puts "You currently don't have any trees to observe."
+	else
+		puts "Your tree is currently #{@height} feet tall."
 	end
+end
 
 	def one_year_passes
 		#Makes time pass. With each passing year the program will check the height of the tree and return a hint on how long it has left to live as well as
@@ -58,18 +62,28 @@ class Tree
 
 	def count_oranges
 	#Counts the amount of oranges on the tree.
-	puts "You count the oranges, there are currently #{@fruit} oranges on the tree waiting to be picked."
+	if @tree_count == 0 
+		puts "There aren't any trees planted at the moment."
+	else
+		puts "You count the oranges, there are currently #{@fruit} oranges on the tree waiting to be picked."
+		end
 	end
+
 
 	def pick_orange
 	#Checks to see if the tree has any oranges and if it does then remove one from the tree and add it to inventory.
-		if @fruit > 0
-		@fruit = @fruit -1
-		puts "You pick an orange off the tree and add it to your inventory."
-		$inventory[:Oranges] = $inventory[:Oranges] + 1
+		if @tree_count == 0 
+			puts "There aren't any trees to pick oranges from."
 		else
-		puts "There aren't any oranges on the tree to pick."
-		end
+
+			if @fruit > 0
+			@fruit = @fruit -1
+			puts "You pick an orange off the tree and add it to your inventory."
+			$inventory[:Oranges] = $inventory[:Oranges] + 1
+			else
+			puts "There aren't any oranges on the tree to pick."
+			end
+	end
 	end
 
 	def plant_tree
