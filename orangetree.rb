@@ -9,10 +9,8 @@ class Tree
 	#Observe the height of the tree, this will grow with each one_year_passes
 	#Older trees will produce more fruit per year
 	#Make tree look older with height
-	puts "This tree is currently #{@height} feet tall."
-
+	puts "Your tree is currently #{@height} feet tall."
 	end
-
 
 	def one_year_passes
 		#Makes time pass. With each passing year the program will check the height of the tree and return a hint on how long it has left to live as well as
@@ -91,21 +89,62 @@ def check_inventory
 		# check your inventory, right now this is just the amount of oranges and seeds
 		puts "Your current inventory is:"
 		puts "#{$inventory}"
-	end
+end
 
+def command_list
+puts "	- Plant - Plants a tree, requires a seed in your inventory."
+puts "	- Time - Makes one year of time pass."
+puts "	- Count - Count the amount of oranges on your tree."
+puts "	- Pick - Pick an orange from your tree."
+puts "	- Inventory - Look at your inventory"
+puts "	- Observe - Observe the height of your tree."
+puts "	- Help - Display the list of commands."
+puts "	- Quit - Quit playing the game."
+end
 
 $inventory = {:Oranges => 0, :Seeds => 1}
-
+game_running = true
+tree = Tree.new
 puts "Welcome to Orange Tree Simulator!"
 puts "Please begin by entering your name: "
 name = gets.chomp
 puts "Welcome #{name}, to play this game you may type in commands to perform certain actions. The commands you have access to are as follows:"
-puts "	- Plant - Adds a sapling to your garden. You must have a seed in your inventory."
-puts "	- Pass Time - Makes one year of time pass."
-puts "	- Count - Count the amount of oranges on your tree."
-puts "	- Pick - Pick an orange from your tree."
-puts "	- Inventory - Look at your inventory"
-puts " 	- Observe - Observe the height of your tree."
+
+command_list
+
+puts ""
+puts "What would you like to do?"
+
+while game_running
+	command = gets.chomp.capitalize
+	
+	case 
+	when command == "Plant"
+		tree.plant_tree
+	when command == "Time"
+		tree.one_year_passes
+	when command == "Count"
+		tree.count_oranges
+	when command == "Pick"
+		tree.pick_orange
+	when command == "Inventory"
+		check_inventory
+	when command == "Observe"
+		tree.check_height
+	when command == "Help"
+		command_list
+	when command == "Quit"
+		game_running = false
+
+	end
+
+end
+		
+
+
+
+
+
 
 
 
