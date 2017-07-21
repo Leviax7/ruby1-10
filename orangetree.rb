@@ -11,9 +11,20 @@ class Tree
 	#Make tree look older with height
 	if @tree_count == 0 
 		puts "You currently don't have any trees to observe."
-	else
+	elsif @height > 0
 		puts "Your tree is currently #{@height} feet tall."
+	else
+		puts "Your tree is still a little sapling!"
 	end
+		if @tree_count >= 1 && @height >= 24 && @height <= 32
+			puts "Your tree looks quite healthy and should produce a good amount of fruit each year."
+		elsif @tree_count >= 1 && @height >= 32 && @height < 40
+			puts "Your tree is starting to look a little old. It probably doesn't have many years left"
+		elsif @tree_count >= 1 && @height > 0
+			puts "This tree looks quite healthy. It probably has many years of life left in it."
+		end
+
+
 end
 
 	def one_year_passes
@@ -21,41 +32,38 @@ end
 		#telling you how much fruit it has produced for the year. 
 		if @tree_count >= 1
 			@height = @height + 4
-			puts "One year of time passes."
-			if @fruit > 0
-				puts "Oh no! The fruit from the previous year has withered and died."
-				@fruit = 0
-			end
+			puts "One year of time passes and your tree slowly increases in size"
 
-			if @height >= 16 && @height <= 20
-				@fruit = @fruit + 3
-				puts "Your tree has produced a small amount of fruit this year!"
-			elsif @height >= 24 && @height <= 32
-				@fruit = @fruit + 5
-				puts "Your tree has produced a sizeable amount of fruit this year!"
-			elsif @height >= 36 && @height <= 40
-				@fruit = @fruit + 7
-				puts "Wow! Your tree produced a bountiful havest this year!"
-			end
-				
-
-			if @height >= 32 && @height < 40
-				puts "Your tree is starting to look a little old. It probably doesn't have many years left"
-
-			elsif @height >= 40
-				puts "This fine old tree has lived a complete life and is no longer producing fruit. You decide to cut it down in order to make room for another sapling."
-				if $inventory[:Seeds] == 0
-					puts "Oh! You look at the torn up soil where your tree once stood and find an orange tree seed. You add it to your inventory."
-					$inventory[:Seeds] = $inventory[:Seeds] + 1
+				if @fruit > 0
+					puts "Oh no! The fruit from the previous year has withered and died."
+					@fruit = 0
+				end
+				if @height < 16
+					puts "Your tree isn't quite old enough to produce fruit yet."
+				elsif @height >= 16 && @height <= 20
+					@fruit = @fruit + 3
+					puts "Your tree has produced a small amount of fruit this year!"
+				elsif @height >= 24 && @height <= 32
+					@fruit = @fruit + 5
+					puts "Your tree has produced a sizeable amount of fruit this year!"
+				elsif @height >= 36 && @height <= 40
+					@fruit = @fruit + 7
+					puts "Wow! Your tree produced a bountiful havest this year!"
 				end
 
-				#Find a way to erase this instance of the tree
-				#Add seeds to inventory from soil where tree was torn up
-			else
-				puts "This tree looks like it still has many years of life left in it."
-			end
+				if @height >= 40
+					puts "This fine old tree has lived a complete life and is no longer producing fruit. You decide to cut it down in order to make room for another sapling."
+					@tree_count = @tree_count - 1
+					if $inventory[:Seeds] == 0
+						puts "Oh! You look at the torn up soil where your tree once stood and find an orange tree seed. You add it to your inventory."
+						$inventory[:Seeds] = $inventory[:Seeds] + 1
+					end
+				end
+					#Find a way to erase this instance of the tree
+					#Add seeds to inventory from soil where tree was torn up
+				
 		else
-			puts "One year of time passes, nothing happens"
+			puts "One year of time passes, but nothing happens"
 		end
 
 		end
@@ -90,6 +98,8 @@ end
 		
 		if $inventory[:Seeds] >= 1
 			puts "You plant an orange tree seed"
+			@height = 0
+			@fruit = 0 
 			$inventory[:Seeds] = $inventory[:Seeds] - 1
 			@tree_count = @tree_count + 1
 		else
@@ -155,7 +165,7 @@ while game_running
 end
 		
 
-
+#TODO reset values when replanting a new tree
 
 
 
