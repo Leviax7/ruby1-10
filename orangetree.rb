@@ -159,13 +159,11 @@ while game_running
 		command_list
 	when command == "Quit"
 		game_running = false
-
+	else
+		puts "Sorry, that isn't a valid command. Please try again."
 	end
 
 end
-		
-
-#TODO reset values when replanting a new tree
 
 
 
