@@ -115,7 +115,7 @@ end
 def check_inventory
 		# check your inventory, right now this is just the amount of oranges and seeds
 		puts "Your current inventory is:"
-		puts "#{$inventory}"
+		$inventory.each { |item, quantity| puts "#{item}: #{quantity}"}
 	end
 
 	def command_list
